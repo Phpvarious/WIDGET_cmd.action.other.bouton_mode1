@@ -91,10 +91,10 @@
     }
     
     jeedom.cmd.addUpdateFunction('#id#',function(_options) {
-      if (debug#id#) console.log('addUpdateFunction -- ' + _options.display_value)
+      if (debug#id#) console.log('addUpdateFunction -- ' + _options.value)
       if (is_object(cmd = document.querySelector('.cmd[data-cmd_uid="#uid#"]'))) {
-        if ('#name#' == _options.display_value.toString().replace('/(<([^>]+)>)/gi', "")) {
-          if (debug#id#) console.log('#name# == ' + _options.display_value)
+        if ('#name#' == _options.value) {
+          if (debug#id#) console.log('#name# == ' + _options.value)
           if ('#hideIfSelect#' == 1) cmd.style.display='none'
           cmd.querySelector('.imageCmd#id#').classList.add("select#id#")
         }
@@ -105,7 +105,7 @@
       }
     })
     
-    jeedom.cmd.refreshValue([{ cmd_id: '#id#', display_value: '#state#', valueDate: '#valueDate#', collectDate: '#collectDate#', alertLevel: '#alertLevel#'}])
+    jeedom.cmd.refreshValue([{ cmd_id: '#id#', display_value: '#state#', value: '#state#',valueDate: '#valueDate#', collectDate: '#collectDate#', alertLevel: '#alertLevel#'}])
     
     document.querySelector('.cmd[data-cmd_uid=#uid#] .action').addEventListener('click', function(event) {
       jeedom.cmd.execute({id: '#id#'})
