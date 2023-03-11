@@ -1,0 +1,197 @@
+<div class="cmd cmd-widget reportModeHidden" data-type="action" data-subtype="other" data-template="default" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">
+  <!-- 
+  Widget name : cmd.action.other.bouton_mode1
+  Github : https://phpvarious.github.io/documentation/widget/fr_FR/action/other/cmd.action.other.bouton_mode1/
+  Création : @PhpVarious
+  Date : 11/03/2023
+  -->
+  <template>
+    <div>borderRadius : Arrondi du bouton. Exemple : white, #ffffff ..... [Défaut : 10]</div>
+    <div>borderSize : Taille de la bordure. [Défaut : 1]</div>
+    <div>hideIfSelect : Masquer le bouton quand il est selectionné. [Défaut 0->Afficher , 1->Masquer]</div>
+    <div>minWidth : Longueur minimum du bouton. [Défaut : 32]</div>
+    <div>minHeight : Hauteur minimum du bouton. [Défaut : 28]</div>
+    <div>--------------- THEME DARK ---------------</div>
+    <div>borderColorSelectDark : Couleur de la bordure quand selectionné en thème Dark. Exemple : white, #ffffff ..... [Défaut : couleur du core]</div>
+    <div>borderColorDefautDark : Couleur de la bordure par défaut en thème Dark. Exemple : white, #ffffff ..... [Défaut : couleur du core]</div>
+    <div>backgroundColorSelectDark : Couleur de fond du bouton quand selectionné en thème Dark. Exemple : white, #ffffff ..... [Défaut : couleur du core]</div>
+    <div>backgroundColorDefautDark : Couleur de fond du bouton par défaut en thème Dark. Exemple : white, #ffffff ..... [Défaut : couleur du core]</div>
+    <div>colorTextDefautDark : Couleur du texte du bouton quand selectionné en thème Dark. Exemple : white, #ffffff ..... [Défaut : couleur du core]</div>
+    <div>colorTextSelectDark : Couleur du texte du bouton par défaut en thème Dark. Exemple : white, #ffffff ..... [Défaut : couleur du core]</div>
+    <div>--------------- THEME LIGHT ---------------</div>
+    <div>borderColorSelectLight : Couleur de la bordure quand selectionné, en thème Light. Exemple : white, #ffffff ..... [Défaut : couleur du core]</div>
+    <div>borderColorDefautLight : Couleur de la bordure par défaut en thème Light. Exemple : white, #ffffff ..... [Défaut : couleur du core]</div>
+    <div>backgroundColorSelectLight : Couleur de fond du bouton quand selectionné, en thème Light. Exemple : white, #ffffff ..... [Défaut : couleur du core]</div>
+    <div>backgroundColorDefautLight : Couleur de fond du bouton par défaut en thème Light. Exemple : white, #ffffff ..... [Défaut : couleur du core]</div>
+    <div>colorTextDefautLight : Couleur du texte du bouton quand selectionné, en thème Light. Exemple : white, #ffffff ..... [Défaut : couleur du core]</div>
+    <div>colorTextSelectLight : Couleur du texte du bouton par défaut en thème Light. Exemple : white, #ffffff ..... [Défaut : couleur du core]</div>
+  </template>
+  <div id="myContent#id#">
+    <div id="imageCmd#id#" class="imageCmd#id# cursor action">#name#</div>
+  </div>
+  <script>
+    var debug#id# = ('#debug#' != '#' + 'debug#' && '#debug#' == 1) ? true : false;
+    var fullJs#id# = false
+    var jeedomVersion#id# = 4.4
+    
+    /* Compatibilité V4.2 V4.3 V4.4 */
+    /**/ if(typeof jeeFrontEnd === 'undefined') {
+    /**/   if (debug#id#) console.log('jeeFrontEnd no exist -> version <= 4.2')
+    /**/   jeedomVersion#id# = 4.2
+    /**/ }
+    /**/ else
+    /**/ {
+    /**/   jeedomVersion#id# = jeeFrontEnd.jeedomVersion.substr(0, 3)
+    /**/   if (debug#id#) console.log('jeeFrontEnd -> version == ' + jeedomVersion#id#)
+    /**/ }
+    /**/ if (jeedomVersion#id# >= 4.4) {
+    /**/   fullJs#id# = true
+    /**/   if (debug#id#) console.log('Full Js')
+    /**/ }
+    /**/ if (typeof jeedom.cmd.addUpdateFunction !== 'function') { // a partir de la 4.3
+    /**/   if (debug#id#) console.log('jeedom.cmd.addUpdateFunction no exist')
+    /**/   jeedom.cmd.addUpdateFunction = function(id,func) { jeedom.cmd.update[id]=func; }
+    /**/ }
+    /* ------------------------------------------ */
+    var themeJeedom#id# = "light"
+    if (document.body.hasAttribute('data-theme')) {
+      if (document.body.getAttribute('data-theme').endsWith('Dark')) themeJeedom#id# = "dark"
+    }
+    else if (isset(jeedom.theme.currentTheme)) {
+      if (jeedom.theme.currentTheme.endsWith('Dark')) themeJeedom#id# = "dark"
+    }
+    
+    if ('#borderColorSelectLight#' != '#' + 'borderColorSelectLight#') document.documentElement.style.setProperty('--borderColorSelectLight#id#', '#borderColorSelectLight#')
+    if ('#borderColorSelectDark#' != '#' + 'borderColorSelectDark#') document.documentElement.style.setProperty('--borderColorSelectDark#id#', '#borderColorSelectDark#')
+    if ('#borderColorDefautLight#' != '#' + 'borderColorDefautLight#') document.documentElement.style.setProperty('--borderColorDefautLight#id#', '#borderColorDefautLight#')
+    if ('#borderColorDefautDark#' != '#' + 'borderColorDefautDark#') document.documentElement.style.setProperty('--borderColorDefautDark#id#', '#borderColorDefautDark#')
+    
+    if ('#backgroundColorSelectLight#' != '#' + 'backgroundColorSelectLight#') document.documentElement.style.setProperty('--backgroundColorSelectLight#id#', '#backgroundColorSelectLight#')
+    if ('#backgroundColorSelectDark#' != '#' + 'backgroundColorSelectDark#') document.documentElement.style.setProperty('--backgroundColorSelectDark#id#', '#backgroundColorSelectDark#')
+    if ('#backgroundColorDefautLight#' != '#' + 'backgroundColorDefautLight#') document.documentElement.style.setProperty('--backgroundColorDefautLight#id#', '#backgroundColorDefautLight#')
+    if ('#backgroundColorDefautDark#' != '#' + 'backgroundColorDefautDark#') document.documentElement.style.setProperty('--backgroundColorDefautDark#id#', '#backgroundColorDefautDark#')
+    
+    if ('#colorTextDefautLight#' != '#' + 'colorTextDefautLight#') document.documentElement.style.setProperty('--colorTextDefautLight#id#', '#colorTextDefautLight#')
+    if ('#colorTextDefautDark#' != '#' + 'colorTextDefautDark#') document.documentElement.style.setProperty('--colorTextDefautDark#id#', '#colorTextDefautDark#')
+    if ('#colorTextSelectLight#' != '#' + 'colorTextSelectLight#') document.documentElement.style.setProperty('--colorTextSelectLight#id#', '#colorTextSelectLight#')
+    if ('#colorTextSelectDark#' != '#' + 'colorTextSelectDark#') document.documentElement.style.setProperty('--colorTextSelectDark#id#', '#colorTextSelectDark#')
+    
+    if (is_numeric('#borderRadius#')) document.documentElement.style.setProperty('--borderRadius#id#', '#borderRadius#px')
+    if (is_numeric('#borderSize#')) document.documentElement.style.setProperty('--borderSize#id#', '#borderSize#px')
+    
+    if (is_numeric('#minWidth#')) document.documentElement.style.setProperty('--minWidth#id#', '#minWidth#px')
+    if (is_numeric('#minHeight#')) document.documentElement.style.setProperty('--minHeight#id#', '#minHeight#px')
+    
+    if (is_object(cmd = document.querySelector('.cmd[data-cmd_uid="#uid#"]'))) {
+      if (themeJeedom#id# == 'dark') cmd.querySelector('.imageCmd#id#').classList.add("dark#id#")
+      else cmd.querySelector('.imageCmd#id#').classList.remove("dark#id#")
+      
+      if (fullJs#id#) cmd.querySelector('#myContent#id#').classList.add("content")
+      else cmd.querySelector('#myContent#id#').classList.add("content-xs")
+    }
+    
+    jeedom.cmd.addUpdateFunction('#id#',function(_options) {
+      if (debug#id#) console.log('addUpdateFunction -- ' + _options.display_value)
+      if (is_object(cmd = document.querySelector('.cmd[data-cmd_uid="#uid#"]'))) {
+        if ('#name#' == _options.display_value.toString().replace('/(<([^>]+)>)/gi', "")) {
+          if (debug#id#) console.log('#name# == ' + _options.display_value)
+          if ('#hideIfSelect#' == 1) cmd.style.display='none'
+          cmd.querySelector('.imageCmd#id#').classList.add("select#id#")
+        }
+        else {
+          cmd.querySelector('.imageCmd#id#').classList.remove("select#id#")
+          if ('#hideIfSelect#' == 1) cmd.style.display=''
+        }
+      }
+    })
+    
+    jeedom.cmd.refreshValue([{ cmd_id: '#id#', display_value: '#state#', valueDate: '#valueDate#', collectDate: '#collectDate#', alertLevel: '#alertLevel#'}])
+    
+    document.querySelector('.cmd[data-cmd_uid=#uid#] .action').addEventListener('click', function(event) {
+      jeedom.cmd.execute({id: '#id#'})
+    })
+    
+    
+    if (fullJs#id#){
+      document.body.addEventListener('changeThemeEvent', function(e) {
+        if (is_object(cmd = document.querySelector('.cmd[data-cmd_uid="#uid#"]'))) {
+          if (debug#id#) console.log('| widget info du jour (id:#id#) : addEventListener : ' + e.detail.theme)
+          if (e.detail.theme.endsWith('Dark')) {
+            cmd.querySelector('.imageCmd#id#').classList.add("dark#id#")
+            if (debug#id#) console.log('add class dark')
+          }
+          else {
+            cmd.querySelector('.imageCmd#id#').classList.remove("dark#id#")
+            if (debug#id#) console.log('remove class dark')
+            
+          }
+        }
+      })
+    } else {
+      $('body').on('changeThemeEvent', function (event, theme) {
+        if (is_object(cmd = document.querySelector('.cmd[data-cmd_uid="#uid#"]'))) {
+          if (debug#id#) console.log('| widget info du jour (id:#id#) : changeThemeEvent : ' + theme)
+          if (theme.endsWith('Dark')) cmd.querySelector('.imageCmd#id#').classList.add("dark#id#")
+          else cmd.querySelector('.imageCmd#id#').classList.remove("dark#id#")
+        }
+      })
+    }
+  </script>
+  <style>
+    :root {
+      --minWidth#id#: 32px;
+      --minHeight#id#: 28px;
+      --borderSize#id# : 1px;
+      --borderRadius#id#: 10px;
+      
+      --borderColorDefautLight#id#: var(--btnEq-default-color);
+      --borderColorDefautDark#id#: var(--btnEq-default-color);
+      --borderColorSelectLight#id# : var(--btnEq-default-color);
+      --borderColorSelectDark#id# : var(--btnEq-default-color);
+      
+      --backgroundColorDefautLight#id#: var(--btnEq-default-color);
+      --backgroundColorDefautDark#id#: var(--btnEq-default-color);
+      --backgroundColorSelectLight#id# : var(--btnEq-default-color);
+      --backgroundColorSelectDark#id# : var(--btnEq-default-color);
+      
+      --colorTextDefautLight#id#: var(--link-color);
+      --colorTextDefautDark#id#: var(--link-color);
+      --colorTextSelectLight#id# : var(--link-color);
+      --colorTextSelectDark#id# : var(--link-color);
+    }
+    .imageCmd#id#{
+      background: var(--backgroundColorDefautLight#id#);
+      color: var(--colorTextDefautLight#id#);
+      min-width: var(--minWidth#id#);
+      min-height: var(--minHeight#id#);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border: var(--borderSize#id#) solid var(--borderColorDefautLight#id#);
+      border-radius: var(--borderRadius#id#);
+      margin-top: 2px;
+      margin-bottom: 2px;
+      padding-left: 5px;
+      padding-right: 5px;
+      font-weight: bold;
+    }
+    .imageCmd#id#.dark#id#{
+      border-color: var(--borderColorDefautDark#id#);
+      background: var(--backgroundColorDefautDark#id#);
+      color: var(--colorTextDefautDark#id#);
+      
+    }
+    .imageCmd#id#.select#id#{
+      border-color: var(--borderColorSelectLight#id#);
+      background: var(--backgroundColorSelectLight#id#);
+      color: var(--colorTextSelectLight#id#);
+      
+    }
+    .imageCmd#id#.select#id#.dark#id#{
+      border-color: var(--borderColorSelectDark#id#);
+      background: var(--backgroundColorSelectDark#id#);
+      color: var(--colorTextSelectDark#id#);
+    }
+  </style>
+</div>
